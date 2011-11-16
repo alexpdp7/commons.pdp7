@@ -1,6 +1,8 @@
 package net.pdp7.commons.facebook;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.scribe.builder.ServiceBuilder;
@@ -39,5 +41,13 @@ public class FacebookService {
 				.apiKey(appId)
 				.apiSecret(appSecret)
 				.callback(callBackUri).build();
+	}
+	
+	public String buildLoginUrl(String callbackUri) {
+		try {
+			return "https://www.facebook.com/dialog/oauth?client_id=" + appId + "&redirect_uri=" + URLEncoder.encode(callbackUri, "ASCII");
+		} catch (UnsupportedEncodingException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }
