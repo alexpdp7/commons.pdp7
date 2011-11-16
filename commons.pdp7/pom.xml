@@ -25,11 +25,13 @@
 			<groupId>org.scribe</groupId>
 			<artifactId>scribe</artifactId>
 			<version>1.2.3</version>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.2</version>
+			<optional>true</optional>
 		</dependency>
 
 	</dependencies>
