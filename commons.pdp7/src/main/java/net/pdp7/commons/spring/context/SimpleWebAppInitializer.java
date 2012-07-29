@@ -19,6 +19,10 @@ public abstract class SimpleWebAppInitializer implements WebApplicationInitializ
 		AnnotationConfigWebApplicationContext dispatcherContext = new AnnotationConfigWebApplicationContext();
 		dispatcherContext.register(getDispatcherConfigurationClasses());
 
+		registerDispatcher(container, dispatcherContext);
+	}
+
+	protected void registerDispatcher(ServletContext container, AnnotationConfigWebApplicationContext dispatcherContext) {
 		ServletRegistration.Dynamic dispatcher = container.addServlet("dispatcher", new DispatcherServlet(dispatcherContext));
 		dispatcher.setLoadOnStartup(1);
 		dispatcher.addMapping("/");
